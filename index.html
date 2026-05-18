@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>SHOWS | Zona Total</title>
+  <link rel="stylesheet" href="shows.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="logo">
+    <div class="logo-circle">ZT</div>
+    <span class="logo-text">SHOWS</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <button class="nav-btn active" data-cat="todos">🔥 Todos</button>
+    <button class="nav-btn" data-cat="caso cerrado">📺 Caso Cerrado</button>
+    <button class="nav-btn" data-cat="rosa">🌹 Rosa de Guadalupe</button>
+    <button class="nav-btn" data-cat="dichos">💬 Como dice el dicho</button>
+    <button class="nav-btn" data-cat="decisiones">⚖️ Decisiones</button>
+  </div>
+  <button class="btn-home" id="btnHome">🏠 Inicio</button>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+</div>
+
+<div class="hero">
+  <div class="hero-overlay"></div>
+</div>
+
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="🔍 Buscar por título o categoría..." class="search-input">
+</div>
+
+<div class="container">
+  <div class="shows-grid" id="showsGrid"></div>
+</div>
+
+<div id="playerOverlay" class="player-overlay" style="display: none;">
+  <button class="close-player" id="closePlayerBtn">✕</button>
+  <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <div class="logo-circle">ZT</div>
+    </div>
+    <p>SHOWS © 2026 - Todos los derechos reservados</p>
+    <p>📧 anelistrabajo@gmail.com</p>
+    <button id="adminBtn" class="admin-btn">🔧 Admin</button>
+  </div>
+</footer>
+
+<script src="shows.js"></script>
+
+<!-- Modal de Administración -->
+<div id="adminModal" class="admin-modal">
+  <div class="admin-modal-content">
+    <div class="admin-modal-header">
+      <h2>Administrar Shows</h2>
+      <span class="admin-close">&times;</span>
+    </div>
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="add">➕ Agregar</button>
+      <button class="tab-btn" data-tab="edit">✏️ Editar/Eliminar</button>
+    </div>
+    
+    <!-- Pestaña Agregar -->
+    <div id="addTab" class="tab-content active">
+      <h3>Agregar nuevo show</h3>
+      <input type="text" id="addNombre" placeholder="Nombre del episodio" class="admin-input">
+      <input type="text" id="addUrl" placeholder="URL del video (YouTube embed)" class="admin-input">
+      <input type="text" id="addImagen" placeholder="URL de la imagen" class="admin-input">
+      <select id="addCategoria" class="admin-select">
+        <option value="caso cerrado">Caso Cerrado</option>
+        <option value="rosa">Rosa de Guadalupe</option>
+        <option value="dichos">Como dice el dicho</option>
+        <option value="decisiones">Decisiones</option>
+      </select>
+      <label class="admin-checkbox">
+        <input type="checkbox" id="addReciente"> 🔥 Marcar como Reciente
+      </label>
+      <button id="submitAddBtn" class="admin-submit">Guardar Show</button>
+      <div id="addMessage" class="admin-message"></div>
+    </div>
+    
+    <!-- Pestaña Editar/Eliminar -->
+    <div id="editTab" class="tab-content">
+      <h3>Selecciona un show para editar o eliminar</h3>
+      <div id="showsList" class="shows-list"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
