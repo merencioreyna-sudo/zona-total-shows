@@ -117,13 +117,14 @@ fetch(SHEET_URL)
       todosLosShows.push({ nombre, url, imagen, categoria, reciente });
     }
 
-    if (todosLosShows.length === 0) {
-      console.error("No se encontraron datos en el CSV");
-      return;
-    }
+if (todosLosShows.length === 0) {
+    console.error("No se encontraron datos en el CSV");
+    return;
+}
 
-    renderizarShconst showsOrdenados = [...todosLosShows].reverse();
-renderizarShows(showsOrdenados, showsGrid);ows(todosLosShows, showsGrid);
+// Ordenar shows (más nuevos primero)
+const showsOrdenados = [...todosLosShows].reverse();
+renderizarShows(showsOrdenados, showsGrid);
   })
   .catch(err => console.error('Error cargando datos:', err));
 
@@ -133,10 +134,9 @@ if (searchInput) {
   function buscarShows() {
     const termino = searchInput.value.trim().toLowerCase();
     if (termino === '') {
-      renderizarShows(todoconst showsOrdenados = [...todosLosShows].reverse();
-renderizarShows(showsOrdenados, showsGrid);sLosShows, showsGrid);
-      return;
-    }
+    renderizarShows([...todosLosShows].reverse(), showsGrid);
+    return;
+}
     const filtrados = todosLosShows.filter(show => 
       show.nombre.toLowerCase().includes(termino) || 
       show.categoria.toLowerCase().includes(termino)
