@@ -122,7 +122,8 @@ fetch(SHEET_URL)
       return;
     }
 
-    renderizarShows(todosLosShows, showsGrid);
+    renderizarShconst showsOrdenados = [...todosLosShows].reverse();
+renderizarShows(showsOrdenados, showsGrid);ows(todosLosShows, showsGrid);
   })
   .catch(err => console.error('Error cargando datos:', err));
 
@@ -132,7 +133,8 @@ if (searchInput) {
   function buscarShows() {
     const termino = searchInput.value.trim().toLowerCase();
     if (termino === '') {
-      renderizarShows(todosLosShows, showsGrid);
+      renderizarShows(todoconst showsOrdenados = [...todosLosShows].reverse();
+renderizarShows(showsOrdenados, showsGrid);sLosShows, showsGrid);
       return;
     }
     const filtrados = todosLosShows.filter(show => 
