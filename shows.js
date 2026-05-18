@@ -61,9 +61,15 @@ function filtrarShows(categoria) {
   if (categoria === 'todos') {
     renderizarShows(todosLosShows, showsGrid);
   } else {
-    // Buscar shows que contengan la categoría (coincidencia parcial, por si hay minúsculas/mayúsculas)
+    // Coincidencia exacta con lo que está en Sheets
+    let categoriaSheet = '';
+    if (categoria === 'caso cerrado') categoriaSheet = 'caso cerrado';
+    else if (categoria === 'rosa') categoriaSheet = 'Rosa de Guadalupe';
+    else if (categoria === 'dichos') categoriaSheet = 'Como dice el dicho';
+    else if (categoria === 'decisiones') categoriaSheet = 'Decisiones';
+    
     const filtrados = todosLosShows.filter(show => 
-      show.categoria.toLowerCase() === categoria.toLowerCase()
+      show.categoria === categoriaSheet
     );
     renderizarShows(filtrados, showsGrid);
   }
