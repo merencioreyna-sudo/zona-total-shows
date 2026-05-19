@@ -61,23 +61,16 @@ function filtrarShows(categoria) {
   if (categoria === 'todos') {
     renderizarShows(todosLosShows, showsGrid);
   } else {
-    console.log('Buscando categoría:', categoria);
-    console.log('Categorías disponibles en Sheets:', todosLosShows.map(s => s.categoria));
-    
-    // Coincidencia exacta con lo que está en Sheets
+    // Usar los valores exactos que se leen del CSV (minúsculas)
     let categoriaSheet = '';
     if (categoria === 'caso cerrado') categoriaSheet = 'caso cerrado';
-    else if (categoria === 'rosa') categoriaSheet = 'Rosa de Guadalupe';
-    else if (categoria === 'dichos') categoriaSheet = 'Como dice el dicho';
-    else if (categoria === 'decisiones') categoriaSheet = 'Decisiones';
+    else if (categoria === 'rosa') categoriaSheet = 'rosa de guadalupe';
+    else if (categoria === 'dichos') categoriaSheet = 'como dice el dicho';
+    else if (categoria === 'decisiones') categoriaSheet = 'decisiones';
     
-    console.log('Buscando en Sheets el valor:', categoriaSheet);
-    
-    const filtrados = todosLosShows.filter(show => {
-      console.log('Comparando:', show.categoria, '===', categoriaSheet, '=', show.categoria === categoriaSheet);
-      return show.categoria === categoriaSheet;
-    });
-    console.log('Filtrados encontrados:', filtrados.length);
+    const filtrados = todosLosShows.filter(show => 
+      show.categoria === categoriaSheet
+    );
     renderizarShows(filtrados, showsGrid);
   }
 }
