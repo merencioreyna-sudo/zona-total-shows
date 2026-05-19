@@ -54,13 +54,16 @@ function renderizarShows(shows, contenedor) {
   }).join('');
 }
 
-// Filtrar por categoría (sin perder el orden original)
+// Filtrar por categoría
 function filtrarShows(categoria) {
   categoriaActual = categoria;
   
   if (categoria === 'todos') {
     renderizarShows(todosLosShows, showsGrid);
   } else {
+    console.log('Buscando categoría:', categoria);
+    console.log('Categorías disponibles en Sheets:', todosLosShows.map(s => s.categoria));
+    
     // Coincidencia exacta con lo que está en Sheets
     let categoriaSheet = '';
     if (categoria === 'caso cerrado') categoriaSheet = 'caso cerrado';
@@ -68,9 +71,13 @@ function filtrarShows(categoria) {
     else if (categoria === 'dichos') categoriaSheet = 'Como dice el dicho';
     else if (categoria === 'decisiones') categoriaSheet = 'Decisiones';
     
-    const filtrados = todosLosShows.filter(show => 
-      show.categoria === categoriaSheet
-    );
+    console.log('Buscando en Sheets el valor:', categoriaSheet);
+    
+    const filtrados = todosLosShows.filter(show => {
+      console.log('Comparando:', show.categoria, '===', categoriaSheet, '=', show.categoria === categoriaSheet);
+      return show.categoria === categoriaSheet;
+    });
+    console.log('Filtrados encontrados:', filtrados.length);
     renderizarShows(filtrados, showsGrid);
   }
 }
